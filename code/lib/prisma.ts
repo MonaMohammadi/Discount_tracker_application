@@ -1,16 +1,13 @@
+import "dotenv/config"
 import { PrismaClient } from "@prisma/client"
-import { PrismaBetterSQLite3 } from "@prisma/adapter-better-sqlite3"
-import Database from "better-sqlite3"
-import path from "node:path"
+import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3"
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined
 }
 
-const dbUrl = process.env.DATABASE_URL || "file:./dev.db"
-const dbPath = dbUrl.startsWith("file:") ? dbUrl.replace(/^file:/, "") : dbUrl
-const resolvedDbPath = dbPath === ":memory:" ? dbPath : path.resolve(process.cwd(), dbPath)
-const adapter = new PrismaBetterSQLite3(new Database(resolvedDbPath))
+const connectionString = process.env.DATABASE_URL || "file:./prisma/dev.db"
+const adapter = new PrismaBetterSqlite3({ url: connectionString })
 
 export const prisma =
   globalForPrisma.prisma ||
