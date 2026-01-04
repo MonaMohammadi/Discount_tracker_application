@@ -100,7 +100,7 @@ export default function DashboardPage() {
                 value={newUrl}
                 onChange={(e) => setNewUrl(e.target.value)}
                 placeholder="https://example.com/product"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md text-black placeholder:text-gray-400 focus:ring-indigo-500 focus:border-indigo-500"
                 required
               />
             </div>
@@ -113,7 +113,7 @@ export default function DashboardPage() {
                 value={newTitle}
                 onChange={(e) => setNewTitle(e.target.value)}
                 placeholder="My Favorite Product"
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md text-black placeholder:text-gray-400 focus:ring-indigo-500 focus:border-indigo-500"
               />
             </div>
             <button
